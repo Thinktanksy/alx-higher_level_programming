@@ -4,4 +4,4 @@
 class LockedClass:
         """ locked class """
             #  define available slots that can be created
-                __slots__ = ('first_name')
+                __slots__ = ['first_name']
