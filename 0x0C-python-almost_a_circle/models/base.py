@@ -1,27 +1,28 @@
 #!/usr/bin/python3
-""" Class Module """
-
+"""
+Class Module
+"""
 import json
 
 
 class Base:
     """ base class
     Attributes:
-    _nb_objects: number of objects created
-    id: id of object
+        _nb_objects: number of objects created
+        id: id of object
     """
     __nb_objects = 0
 
     def __init__(self, id=None):
-    """initiation method
-    args:
-    id: id of object
-    """
-    if id is not None:
-        self.id = id
-    else:
-        Base.__nb_objects += 1
-        self.id = Base.__nb_objects
+        """initiation method
+        args:
+            id: id of object
+        """
+        if id is not None:
+            self.id = id
+        else:
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
 
     def integer_validator(self, name, value):
         """check if value is an integer"""
@@ -41,9 +42,9 @@ class Base:
     def to_json_string(list_dictionaries):
         """returns JSON string
         args:
-        list_dictionaries: list of dictionaries
+            list_dictionaries: list of dictionaries
         return:
-        return serialized list or empty list
+            return serialized list or empty list
         """
         return json.dumps(list_dictionaries or [])
 
@@ -58,7 +59,6 @@ class Base:
         if json_string:
             return json.loads(json_string)
         return []
-
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -103,4 +103,3 @@ class Base:
             return [cls.create(**x) for x in d]
         except FileNotFoundError:
             return []
-
